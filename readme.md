@@ -35,5 +35,15 @@ The famicom/nes is 5v. The beaglebone has 3.3v GPIO. The awesome Kumar Abhishek 
 
 # Roadmap
 
-v0: sniff first 256 bytes of data read with beaglelogic and r/w pin
-v1: add some PISO shift-registers to read data+address and dump roms as they are playing with beaglelogic
+### v0
+
+sniff first 256 bytes of data read with beaglelogic and r/w pin
+
+### v1
+
+add some PISO shift-registers to read data+address and dump roms as they are playing with beaglelogic
+
+
+### v2
+
+add some nice lcd screen output
