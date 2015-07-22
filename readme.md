@@ -37,13 +37,30 @@ The famicom/nes is 5v. The beaglebone has 3.3v GPIO. The awesome Kumar Abhishek 
 
 ### v0
 
-sniff first 256 bytes of data read with beaglelogic and r/w pin
+sniff first 256 bytes of data (D0-D7) read with beaglelogic triggered by r/w pin rising
 
 ### v1
 
-add some PISO shift-registers to read data+address and dump roms as they are playing with beaglelogic
+8192 samples using PRU0/1 storing to RAM 0,1, and 2
 
+D7-D0 store in Data RAM 0 ( 8KB )
+A7-A0 store in Data RAM 1 ( 8KB )
+A8-A11 are stored as high nibbles in Shared RAM 2 ( 12KB )
+A12-A15 are stored as low nibbles in Shared RAM 2 ( 12KB )
+
+   name | pru | pins | memory_address | RAM | notes
+--------|-----|------|----------------|-----|-------
+    CLK |  0  | 0    |                |     |
+  D7-D0 |  0  | 1-8  | 0x0000_0000    |  0  |
+A15-A12 |  0  | 9-12 | 0x0001_0000    |  2  | high nibble
+    CLK |  1  | 0    |                |     |
+  A7-A0 |  1  | 1-8  | 0x0000_2000    |  1  |
+ A11-A8 |  1  | 9-12 | 0x0001_0000    |  2  | low nibble
 
 ### v2
+
+add some PISO shift-registers to read data+address and dump roms as they are playing with beaglelogic
+
+### v3
 
 add some nice lcd screen output
